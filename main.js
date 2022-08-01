@@ -49,6 +49,12 @@ while (count <= gridWidth * gridWidth) {
 // Add queries for all your squares, palette colors, and brush here.
 // (Note the singular or plural used in that sentence!)
 
+let paletteColors = document.querySelectorAll(".palette .palette-color");
+
+let brush = document.querySelector(".current-brush");
+
+let canvasArea = document.querySelectorAll(".canvas div")
+
 
 
 /****************************
@@ -61,6 +67,44 @@ while (count <= gridWidth * gridWidth) {
 // run as event listeners (after the next step is set up) isn't a
 // bad idea for testing purposes.
 
+for (let i = 0; i < paletteColors.length; i++){
+  
+  paletteColors[i].addEventListener('click', function(){
+    console.log(paletteColors[i])
+    brush.classList.replace(brush.classList[1], paletteColors[i].classList[1])
+    // brush.classList.remove(brush.classList[1])
+    // brush.classList.add(paletteColors[i].classList[1])
+
+  })
+
+}
+
+brush.addEventListener('click', function(){
+    console.log(brush)
+  })
+
+  for (let square of canvasArea){
+    // square.addEventListener('click', function(){
+    //   console.log(square)
+    //   square.classList.replace(square.classList[1], brush.classList[1]);
+    // })
+    square.addEventListener('mouseover', function(){
+      if (mousedown === true){
+      square.classList.replace(square.classList[1], brush.classList[1])
+  }})
+  }
+//mousedown the event occurs when the user presses a mouse button over an element
+let mosuedown = false
+  document.addEventListener('mousedown', function(){
+    mousedown = true
+  });
+//mouseup the event occurs when the user releases a mouse button over an element
+
+  document.addEventListener('mouseup', function(){
+    mousedown = false
+  })
+
+  //mousedown and mouseup
 
 
 /**************************
